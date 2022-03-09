@@ -33,66 +33,39 @@ TEST_CASE("Good input")
     CHECK(nospaces(mat(3, 3, '&', '-')) == nospaces("&&&\n"
                                                    "&-&\n"
                                                    "&&&"));
-    CHECK(nospaces(mat(9,7,'@','-')) == nospaces("@@@@@@@@@\n
-					        @-------@\n
-     					        @-@@@@@-@\n
-						@-@---@-@\n
-						@-@@@@@-@\n
-						@-------@\n
-						@@@@@@@@@"));
-    CHECK(nospaces(mat(5,7,'@','-')) == nospaces("@@@@@\n
-					        @---@\n
-     					        @-@-@\n
-						@-@-@\n
-						@-@-@\n
-						@---@\n
-						@@@@@"));
+
+    CHECK(nospaces(mat(9, 7, '@', '-')) == nospaces("@@@@@@@@@\n"
+													 "@-------@\n"
+													 "@-@@@@@-@\n"
+													 "@-@---@-@\n"
+													 "@-@@@@@-@\n"
+													 "@-------@\n"
+													 "@@@@@@@@@"));
+
+    CHECK(nospaces(mat(5,7,'@','-')) == nospaces("@@@@@\n"
+					        					  "@---@\n"
+     					        				  "@-@-@\n"
+												  "@-@-@\n"
+												  "@-@-@\n"
+												  "@---@\n"
+												  "@@@@@"));
+
     CHECK(nospaces(mat(3, 1, '+', '0')) == nospaces("+++"));
-    CHECK(nospaces(mat(9,7,'^','-')) == nospaces("^^^^^^^^^\n
-					        ^-------^\n
-     					        ^-^^^^^-^\n
-						^-^---^-^\n
-						^-^^^^^-^\n
-						^-------^\n
-						^^^^^^^^^"));
+    
     CHECK(nospaces(mat(13, 3, '$', '*')) == nospaces("$$$$$$$$$$$$$\n"
                                                      "$***********$\n"
                                                      "$$$$$$$$$$$$$"));
     CHECK(nospaces(mat(9, 3, '$', '@')) == nospaces("888888888\n"
                                                     "8@@@@@@@8\n"
                                                     "888888888"));
-    CHECK(nospaces(mat(3,5,'$','+')) == nospaces("$$$
-					    	  $+$
-						  $+$
-						  $+$
-						  $$$"));
+    CHECK(nospaces(mat(3,5,'$','+')) == nospaces("$$$\n"
+					    	  "$+$\n"
+						  "$+$\n"
+						  "$+$\n"
+						  "$$$"));
+
     CHECK(nospaces(mat(1,1,'#','#')) == nospaces("#"));
-    CHECK(nospaces(mat(13,5,'@','-')) == nospaces("@@@@@@@@@@@@@/n
-						   @-----------@/n
-						   @-@@@@@@@@@-@/n
-						   @-----------@/n
-						   @@@@@@@@@@@@@"));
-    CHECK(nospaces(mat(3,3,'*','&')) == nospaces("***/n
-						  *&*/n
-						  ***"));
-    CHECK(nospaces(mat(3,7,'$','!')) == nospaces("$$$
-					    	  $!$
-					    	  $!$
-					    	  $!$
-						  $!$
-						  $!$
-						  $$$"));
-    CHECK(nospaces(mat(5,3,'*','&')) == nospaces("*****/n
-						 *&&&*/n
-						 *****"));
-    CHECK(nospaces(mat(5,3,'X','&')) == nospaces("XXXXX/n
-						  X&&&X/n
-						  XXXXX"));
-    CHECK(nospaces(mat(5,5,'*','&')) == nospaces("*****/n
-						  *&&&*/n
-						  *&&&*/n
-						  *&&&*/n
-						  *****"));
+    
 }
 TEST_CASE("Bad input")
 {
@@ -113,4 +86,10 @@ TEST_CASE("Bad input")
     CHECK_THROWS(mat(4,'3','*','$'));
     //even number and 0
     CHECK_THROWS(mat(4,'0','*','$'));
+	CHECK_THROWS(mat(5,2,'*','$'));
+	CHECK_THROWS(mat(6,3,'*','$'));
+	CHECK_THROWS(mat(4,1,'*','$'));
+	CHECK_THROWS(mat(8,3,'*','$'));
+	CHECK_THROWS(mat(9,6,'*','$'));
+	CHECK_THROWS(mat(7,4,'*','$'));
 }
